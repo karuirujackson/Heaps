@@ -28,11 +28,16 @@ class MinHeap {
 
   bubbleUp() {
     let current = this.size;
+    let swapCount = 0;
     while (current > 1 && this.heap[getParent(current)] > this.heap[current]) {
       console.log(`.. swap ${this.heap[current]} with parent ${this.heap[getParent(current)]}`);
       this.swap(current, getParent(current));
       console.log('..', this.heap);
       current = getParent(current);
+      swapCount++;
+    }
+    if (this.size === 100) {
+      console.log(`Heap of ${this.size} elements restored with ${swapCount} swaps`);
     }
   }
 
@@ -41,22 +46,29 @@ class MinHeap {
     let current = 1;
     let leftChild = getLeft(current);
     let rightChild = getRight(current);
+    let swapCount = 0;
 
     while (this.canSwap(current, leftChild, rightChild)) {
       if (this.exists(leftChild ) && this.exists(rightChild)) {
         if (this.heap[leftChild] < this.heap[rightChild]) {
           this.swap(current, leftChild);
           current = leftChild;
+    swapCount++;
         } else {
           this.swap(current, rightChild);
           current = rightChild;
+    swapCount++;
         }       
       } else {
         this.swap(current, leftChild);
         current = leftChild;
+  swapCount++;
       }
       leftChild = getLeft(current);
       rightChild = getRight(current);
+    }
+    if (this.size === 99) {
+      console.log(`Heap of ${this.size} elements restored with ${swapCount} swaps`)
     }
   }
 
