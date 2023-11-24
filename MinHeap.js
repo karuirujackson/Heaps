@@ -50,7 +50,9 @@ class MinHeap {
     let swapCount = 0;
 
     while (this.canSwap(current, leftChild, rightChild)) {
+      //Only comapre left & right if they both exist
       if (this.exists(leftChild ) && this.exists(rightChild)) {
+        //Make sure to swap with the smaller of the two children
         if (this.heap[leftChild] < this.heap[rightChild]) {
           this.swap(current, leftChild);
           current = leftChild;
@@ -61,6 +63,7 @@ class MinHeap {
     swapCount++;
         }       
       } else {
+        //If only one child exist, always swap with the left
         this.swap(current, leftChild);
         current = leftChild;
   swapCount++;
