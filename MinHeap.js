@@ -1,3 +1,4 @@
+//MinHeap.js
 class MinHeap {
   constructor() {
     this.heap = [ null ];
@@ -64,6 +65,7 @@ class MinHeap {
         current = leftChild;
   swapCount++;
       }
+      //Prevents it from running infinitely
       leftChild = getLeft(current);
       rightChild = getRight(current);
     }
